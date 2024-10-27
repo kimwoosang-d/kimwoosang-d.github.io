@@ -1,0 +1,25 @@
+<div id="table-of-contents">
+  <h2>목차</h2>
+  <ul></ul>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toc = document.querySelector("#table-of-contents ul");
+    const headers = document.querySelectorAll("h2, h3, h4"); // 필요한 헤더 태그 레벨을 선택합니다.
+
+    headers.forEach(header => {
+      const title = header.innerText;
+      const id = title.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
+      header.id = id;
+
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "#" + id;
+      a.innerText = title;
+
+      li.appendChild(a);
+      toc.appendChild(li);
+    });
+  });
+</script>
